@@ -182,12 +182,15 @@ h3 {
     color: var(--red);
 }
 
+/* Nav Starts */
+
 header {
-    max-width: 375px;
+    z-index: 10;
+    width: 375px;
+    height: 90px;
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 3fr 1fr;
-    padding: 5px;
     background-image: url("/images/green375x90.jpg");
     border-radius: 0 0 20px 20px;
     margin-left: calc(50vw - 375px / 2);
@@ -196,27 +199,92 @@ header {
 }
 
 #nav_logo {
-    margin-left: 10px;
+    grid-column: 1;
+    margin: 5px 0 0 5px;
+    width: 74.205px;
+    height: 73.125px;
+}
+
+#nav_logo_big {
+    display: none;
+    width: 277px;
+    height: 82px;
+    margin: auto 15px 0 15px;
 }
 
 #site_title {
+    grid-column: 2;
     text-align: center;
     color: var(--cream);
 }
 
 #menu_icon {
-    margin: 15% 5px 5px auto;
+    grid-column: 3;
+    width: 70px;
+    height: 59px;
+    margin: 15% 15px 5px auto;
+}
+
+#menu_icon:hover~div {
+    animation-name: turn_menu;
+    animation-delay: 0s;
+    animation-duration: 100ms;
+    animation-fill-mode: forwards;
+}
+
+@keyframes turn_menu {
+    0% {
+        transform-origin: right;
+        transform: rotateY(90deg);
+    }
+
+    100% {
+        transform-origin: right;
+        transform: rotateY(0deg);
+    }
 }
 
 #menu_links {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    width: 375px;
+    height: 375px;
+    left: calc(50vw - 375px / 2);
+    top: 0;
+    justify-content: space-evenly;
+    background-color: var(--gray);
+    align-items: end;
+    transform-origin: right;
+    transform: rotateY(90deg);
 }
 
-main {
+#cross {
+    margin-right: 20px;
+}
+
+.menu_item {
+    height: 40px;
+    font-size: 30px;
+    text-align: right;
+    margin-right: 25px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+#design_link, #aboutme_link, #contact_link {
+    color: var(--cream)
+}
+
+/* Nav Ends */
+
+/* main starts */
+
+#ent_main {
     margin-top: 100px;
     max-width: 375px;
     display: grid;
-    grid-template-rows: repeat(7, 65px);
+    grid-template-rows: repeat(7, 70px);
     grid-template-columns: 1fr 1fr 1fr;
     padding: 10px;
     margin-left: calc(50vw - 375px / 2);
@@ -224,10 +292,11 @@ main {
 
 #big_logo {
     grid-column: 1/4;
-    grid-row: 1/7;
+    grid-row: 1/4;
+    margin-right: 15px;
 }
 
-main div:nth-child(2) {
+#ent_main div:nth-child(2) {
     grid-column: 1;
     grid-row: 3;
     text-align: right;
@@ -239,7 +308,7 @@ main div:nth-child(2) {
     animation-fill-mode: forwards;
 }
 
-main div:nth-child(3) {
+#ent_main div:nth-child(3) {
     grid-column: 1;
     grid-row: 4;
     text-align: left;
@@ -251,7 +320,7 @@ main div:nth-child(3) {
     animation-fill-mode: forwards;
 }
 
-main div:nth-child(4) {
+#ent_main div:nth-child(4) {
     grid-column: 1;
     grid-row: 5;
     text-align: center;
@@ -263,7 +332,7 @@ main div:nth-child(4) {
     animation-fill-mode: forwards;
 }
 
-main div:nth-child(5) {
+#ent_main div:nth-child(5) {
     grid-column: 3;
     grid-row: 3;
     text-align: left;
@@ -275,7 +344,7 @@ main div:nth-child(5) {
     animation-fill-mode: forwards;
 }
 
-main div:nth-child(6) {
+#ent_main div:nth-child(6) {
     grid-column: 3;
     grid-row: 4;
     text-align: right;
@@ -287,7 +356,7 @@ main div:nth-child(6) {
     animation-fill-mode: forwards;
 }
 
-main div:nth-child(7) {
+#ent_main div:nth-child(7) {
     grid-column: 3;
     grid-row: 5;
     text-align: center;
@@ -299,13 +368,13 @@ main div:nth-child(7) {
     animation-fill-mode: forwards;
 }
 
-main div:nth-child(8) {
+#ent_main div:nth-child(8) {
     grid-column: 1/4;
     grid-row: 6;
     text-align: center;
 }
 
-main div:nth-child(9) {
+#ent_main div:nth-child(9) {
     grid-column: 1/4;
     grid-row: 7;
     text-align: center;
@@ -328,7 +397,75 @@ main div:nth-child(9) {
     }
 }
 
+#designs_main {
+    width: 100%;
+    max-width: 375px;
+    display: grid;
+    grid-template-columns: 96%;
+    grid-template-rows: repeat(5, 1fr);
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-left: calc(50% - 375px / 2);
+    gap: 25px;
+}
+
+.designs_cards {
+    box-sizing: border-box;
+    border-radius: 20px;
+    width: 348px;
+    height: 195px;
+    border: 5px solid var(--gray);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-weight: 800;
+    margin-left: 13px;
+}
+
+#p_design {
+    grid-row: 1;
+    background-image: url("/images/cubist-348_x_195.jfif");
+    color: var(--cream);
+}
+
+#d_design {
+    grid-row: 2;
+    background-image: url("/images/KarettaWeb-348_x_195.jfif");
+    color: var(--gray);
+    text-shadow: white 0 0 10px;
+}
+
+#coding {
+    grid-row: 3;
+    background-image: url("/images/coding-348_x_195.jfif");
+    color: var(--cream);
+}
+
+#c_create {
+    grid-row: 4;
+    background-image: url("/images/FujifilmXT4-348_x_195.jfif");
+    color: var(--cream);
+}
+
+#about_mid_button {
+    grid-row: 5;
+    background-color: var(--green);
+    color: var(--cream);
+    text-align: center;
+    z-index: 8;
+}
+
+#about_mid_button h2 {
+    margin: 20% 0 auto 0;
+}
+
+/* Main ends */
+
+/* footer starts */
+
 footer {
+    z-index: 9;
     background-image: url("/images/green375x60.jpg");
     width: 375px;
     height: 60px;
@@ -344,12 +481,352 @@ footer {
     justify-content: space-around;
 }
 
+.social {
+    width: 24px;
+    height: 24px;
+}
+
 #copyr {
     width: 100%;
     text-align: center;
     color: var(--cream);
 }
 
-@media screen {
+@media screen and (min-width:742px) {
+    body {
+        background-image: url("/images/cream768x1024.jpg");
+    }
+
+    header {
+        width: 742px;
+        background-image: url("/images/green742x90.jpg");
+        margin-left: calc(50% - 742px / 2);
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+        
+    h2 {
+        font-size: 36px;
+        font-weight: 700;
+    }
     
+    h3 {
+        font-size: 32px;
+        font-weight: 600;
+    }
+
+    h4 {
+        font-size: 28px;
+    }
+
+    h5 {
+        font-size: 24px;
+    }
+    
+    #cont_link {
+        font-weight: 300;
+        color: var(--red);
+    }
+
+    #nav_logo {
+        display: none;
+    }
+
+    #nav_logo_big {
+        display: inline-block;
+    }
+
+    #menu_links {
+        left: calc(50vw - 742px / 2 + 367px);
+    }
+
+    #ent_main {
+        margin-top: 100px;
+        max-width: 746px;
+        display: grid;
+        grid-template-rows: repeat(7, 150px);
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: 10px;
+        margin-left: calc(50vw - 742px / 2);
+    }
+
+    #ent_main div:nth-child(9) {
+        margin-top: 10px;
+    }
+
+    #designs_main {
+        width: 100%;
+        max-width: 742px;
+        margin-left: calc(50% - 742px / 2);
+    }
+    
+    .designs_cards {
+        width: 742px;
+        height: 417px;
+        margin-left: 0;
+    }
+    
+    #p_design {
+        background-image: url("/images/cubist-742_x_417.jfif");
+    }
+    
+    #d_design {
+        background-image: url("/images/KarettaWeb-742_x_417.jfif");
+    }
+    
+    #coding {
+        background-image: url("/images/coding-742_x_417.jfif");
+    }
+    
+    #c_create {
+        background-image: url("/images/FujifilmXT4-742_x_417.jfif");
+    }
+    
+    footer {
+        background-image: url("/images/green742x40.jpg");
+        width: 742px;
+        height: 40px;
+        display: flex;
+        margin-left: calc(50% - 742px / 2);
+    }
+    
+    #social_med {
+        width: 375px;
+    }
+    
+    #copyr {
+        width: calc(100% - 375px);
+        margin-right: 20px;
+        text-align: right;
+        color: var(--cream);
+    }
+}
+
+@media screen and (min-width:1024px) {
+    h4 {
+        font-size: 18px;
+    }
+
+    h5 {
+        font-size: 18px;
+    }
+
+    header {
+        width: 100%;
+        height: 90px;
+        grid-template-columns: 1fr 1fr 3fr;
+        background-image: url("/images/green1228x110.jpg");
+        margin-left: 0;
+    }
+
+    #menu_icon {
+        display: none;
+    }
+
+    #cross {
+        display: none;
+    }
+    
+    #menu_links {
+        position: static;
+        grid-column: 3;
+        flex-direction: row;
+        width: 100%;
+        height: 90px;
+        left: calc(50vw - 375px / 2);
+        top: 0;
+        justify-content: space-evenly;
+        background-color: inherit;
+        align-items: center;
+        transform: rotateY(0deg);
+    }
+
+    .menu_item {
+        font-size: 26px;
+        margin: 20px 0 auto 0;
+    }
+
+    #ent_main {
+        width: 100%;
+        margin-top: 100px;
+        grid-template-columns: 33vw 34vw 33vw;
+        grid-template-rows: 200px 130px 130px 130px 100px;
+        padding: 10px;
+        margin-left: 0;
+    }
+    
+    #big_logo {
+        grid-row: 1/4;
+        margin-left: calc(50% - 300px);
+        width: 600px;
+    }
+
+    #ent_main div:nth-child(2) {
+        grid-row: 2;
+    }
+    
+    #ent_main div:nth-child(3) {
+        grid-row: 3;
+    }
+    
+    #ent_main div:nth-child(4) {
+        grid-row: 4;
+    }
+    
+    #ent_main div:nth-child(5) {
+        grid-row: 2;
+    }
+    
+    #ent_main div:nth-child(6) {
+        grid-row: 3;
+        margin-right: 50px;
+    }
+    
+    #ent_main div:nth-child(7) {
+        grid-row: 4;
+    }
+    
+    #ent_main div:nth-child(8) {
+        grid-row: 4;
+    }
+    
+    #ent_main div:nth-child(9) {
+        grid-row: 5;
+        margin-top: 10px;
+    }
+
+    #designs_main {
+        width: 100%;
+        max-width: 848px;
+        grid-template-rows: 172px 58px 32px 58px 172px;
+        grid-template-columns: 332px 77px 30px 77px 332px;
+        margin-top: 100px;
+        margin-bottom: 100px;
+        margin-left: calc(50% - 848px / 2);
+        gap: 0;
+    }
+    
+    .designs_cards {
+        width: 409px;
+        height: 230px;
+        margin-left: 0;
+    }
+    
+    #p_design {
+        grid-row: 1/3;
+        grid-column: 1/3;
+        background-image: url("/images/cubist-409_x_230.jfif");
+    }
+    
+    #d_design {
+        grid-row: 1/3;
+        grid-column: 4/6;
+        background-image: url("/images/KarettaWeb-409_x_230.jfif");
+        text-align: right;
+    }
+    
+    #coding {
+        grid-row: 4/6;
+        grid-column: 1/3;
+        background-image: url("/images/coding-409_x_230.jfif");
+    }
+    
+    #c_create {
+        grid-row: 4/6;
+        grid-column: 4/6;
+        background-image: url("/images/FujifilmXT4-409_x_230.jfif");
+        text-align: right;
+    }
+    
+    #about_mid_button {
+        grid-row: 2/5;
+        grid-column: 2/5;
+        width: 177px;
+        height: 148px;
+        border: var(--cream) solid 32px;
+    }
+
+    #am_text {
+        font-size: 20px;
+        font-weight: 600;
+        margin: 45% 0 auto 0;
+    }
+    
+    footer {
+        background-image: url("/images/green1228x60.jpg");
+        width: 100%;
+        height: 40px;
+        margin: 0;
+    }
+}
+
+@media screen and (min-width:1228px) {
+    header {
+        width: 1228px;
+        margin-left: calc(50% - 1228px / 2);
+    }
+
+    #ent_main {
+        grid-template-columns: repeat(3, 405px);
+        grid-template-rows: 200px 130px 130px 130px 100px 100px;
+        width: 1228px;
+        margin-left: calc(50% - 1228px / 2);
+    }
+
+    #ent_main div:nth-child(8) {
+        grid-row: 5;
+    }
+    
+    #ent_main div:nth-child(9) {
+        grid-row: 6;
+    }
+
+    #designs_main {
+        width: 100%;
+        max-width: 1228px;
+        grid-template-rows: 247px 86px 40px 86px 247px;
+        grid-template-columns: 483px 111px 40px 111px 483px;
+        margin-top: 150px;
+        margin-bottom: 100px;
+        margin-left: calc(50% - 1228px / 2);
+        gap: 0;
+    }
+    
+    .designs_cards {
+        width: 592px;
+        height: 333px;
+    }
+    
+    #p_design {
+        background-image: url("/images/cubist-592_x_333.jfif");
+    }
+    
+    #d_design {
+        background-image: url("/images/KarettaWeb-592_x_333.jfif");
+    }
+    
+    #coding {
+        background-image: url("/images/coding-592_x_333.jfif");
+    }
+    
+    #c_create {
+        background-image: url("/images/FujifilmXT4-592_x_333.jfif");
+    }
+    
+    #about_mid_button {
+        width: 262px;
+        height: 212px;
+    }
+
+    #am_text {
+        font-size: 32px;
+        font-weight: 800;
+    }
+
+    footer {
+        width: 1228px;
+        margin-left: calc(50% - 1228px / 2);
+    }
 }
